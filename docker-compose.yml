@@ -17,7 +17,7 @@ services:
       - POSTGRES_INITDB_ARGS
     networks:
       - pleasanter-net
-    
+
   codedefiner:
     container_name: codedefiner
     image: implem/pleasanter:codedefiner
