@@ -8,8 +8,15 @@ Docker version 24.0.5, build ced0996
 
 Docker Compose version v2.20.2
 
-### 参照元
+## 参照元
 https://qiita.com/imp-kawano/items/b4735325683426cfffa8
+
+https://qiita.com/imp-kawano/items/a9407d474c1dd39731d2
+
+## 参照元からの主な変更点
+- setup.sqlにImplem.Pleasanter_Userに関する設定を追加
+- .envのPOSTGRES_USERとPOSTGRES_DBをpostgresに固定
+- docker-compose.ymlにボリューム db-dataを追加
 
 ## 基本
 ### 起動
