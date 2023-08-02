@@ -6,6 +6,11 @@ docker composeで動くPleasanterを自分の環境に合うようアレンジ�
 - Docker version 24.0.5, build ced0996
 - Docker Compose version v2.20.2
 
+## Pleasanterとは
+無料で使えるOSSのノーコード・ローコード開発ツール
+
+こちらをご残照ください https://pleasanter.org/
+
 ## 参照元
 https://qiita.com/imp-kawano/items/b4735325683426cfffa8
 
@@ -15,6 +20,14 @@ https://qiita.com/imp-kawano/items/a9407d474c1dd39731d2
 - setup.sqlにImplem.Pleasanter_Userに関する設定を追加
 - .envのPOSTGRES_USERとPOSTGRES_DBをpostgresに固定
 - docker-compose.ymlにデータ永続化のためのボリューム db-dataを追加
+
+## 注意
+- .envとsetup.sqlにあるパスワードはそれぞれお好みの文字列に置き換えてください
+```
+<Any Sa password>
+<Any Owner password>
+<Any User password>
+```
 
 ## 基本
 ### 起動
