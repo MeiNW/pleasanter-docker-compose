@@ -24,6 +24,9 @@ https://qiita.com/imp-kawano/items/a9407d474c1dd39731d2
 sudo docker compose up -d
 ```
 
+### アクセス
+webブラウザで http://dockerホストIP:50001 にアクセス
+
 ### 停止
 ```
 sudo docker compose down
