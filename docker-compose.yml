@@ -1,34 +1,44 @@
 version: '3'
+
 services:
   db:
-    image: postgres:15.2
+    container_name: postgres
+    image: postgres:15
     volumes:
       - ./initdb:/docker-entrypoint-initdb.d
       - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: sa_password
-      POSTGRES_DB: postgres
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - POSTGRES_HOST_AUTH_METHOD
+      - POSTGRES_INITDB_ARGS
     networks:
       - pleasanter-net
-
+    
   codedefiner:
+    container_name: codedefiner
     image: implem/pleasanter:codedefiner
     depends_on:
       - db
-    env_file: env-list
+    environment:
+      Implem.Pleasanter_Rds_PostgreSQL_SaConnectionString: ${Implem_Pleasanter_Rds_PostgreSQL_SaConnectionString}
+      Implem.Pleasanter_Rds_PostgreSQL_OwnerConnectionString: ${Implem_Pleasanter_Rds_PostgreSQL_OwnerConnectionString}
+      Implem.Pleasanter_Rds_PostgreSQL_UserConnectionString: ${Implem_Pleasanter_Rds_PostgreSQL_UserConnectionString}
     networks:
       - pleasanter-net
-    command: _rds
 
   pleasanter:
-    image: implem/pleasanter:1.3.40.1
+    container_name: pleasanter
+    image: implem/pleasanter
     depends_on:
       - db
-      - codedefiner
-    env_file: env-list
-    ports:
-      - 50001:80
+    environment:
+      Implem.Pleasanter_Rds_PostgreSQL_SaConnectionString: ${Implem_Pleasanter_Rds_PostgreSQL_SaConnectionString}
+      Implem.Pleasanter_Rds_PostgreSQL_OwnerConnectionString: ${Implem_Pleasanter_Rds_PostgreSQL_OwnerConnectionString}
+      Implem.Pleasanter_Rds_PostgreSQL_UserConnectionString: ${Implem_Pleasanter_Rds_PostgreSQL_UserConnectionString}
     networks:
       - pleasanter-net
 
