@@ -1,4 +1,4 @@
-create user "Implem.Pleasanter_Owner" with password 'owner_password';
+create user "Implem.Pleasanter_Owner" with password '<Any Owner password>';
 create schema authorization "Implem.Pleasanter_Owner";
 create database "Implem.Pleasanter" with owner "Implem.Pleasanter_Owner";
 \c "Implem.Pleasanter";
