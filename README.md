@@ -1,5 +1,5 @@
-# pleasanter docker compose
-dockerで動くpleasanterをdocker composeにまとめたもの
+# What's this?
+docker composeで動くPleasanterを自分の環境に合うようアレンジしたもの
 
 ## 試験環境
 - Ubuntu 22.04
