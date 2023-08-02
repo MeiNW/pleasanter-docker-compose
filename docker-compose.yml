@@ -29,6 +29,7 @@ services:
       Implem.Pleasanter_Rds_PostgreSQL_UserConnectionString: ${Implem_Pleasanter_Rds_PostgreSQL_UserConnectionString}
     networks:
       - pleasanter-net
+    command: _rds
 
   pleasanter:
     container_name: pleasanter
