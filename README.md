@@ -1,5 +1,10 @@
-# pleasanter
+# pleasanter docker compose
 dockerで動くpleasanterをdocker composeにまとめたもの
+
+## 試験環境
+Ubuntu 22.04
+Docker version 24.0.5, build ced0996
+Docker Compose version v2.20.2
 
 ### 参照元
 https://qiita.com/imp-kawano/items/b4735325683426cfffa8
