@@ -5,8 +5,15 @@ services:
     container_name: postgres
     image: postgres:15
     volumes:
-      - ./initdb:/docker-entrypoint-initdb.d
-      - db-data:/var/lib/postgresql/data
+      - type: bind
+        source: ./initdb
+        target: /docker-entrypoint-initdb.d
+      - type: volume
+        source: db-data
+        target: /var/lib/postgresql/data
+      - type: bind
+        source: /<path to your work dir>/backup/
+        target: /backup
     ports:
       - "5432:5432"
     environment:
