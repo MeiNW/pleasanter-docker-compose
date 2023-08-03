@@ -9,9 +9,9 @@ docker composeで動くPleasanterを自分の環境に合うようアレンジ�
 ## Pleasanterとは
 無料で使えるOSSのノーコード・ローコード開発ツール
 
-とても便利で活用させていただいています
+とても便利で活用しています
 
-こちらをご残照ください https://pleasanter.org/
+https://pleasanter.org/
 
 ## 参照元
 https://qiita.com/imp-kawano/items/b4735325683426cfffa8
@@ -69,8 +69,9 @@ sudo docker exec -it 起動中のpostgreコンテナID /bin/sh -c "pg_dump -U po
 ```
 
 ### リストア
+`<backup_file_name>`は各自書き換えてください。
 ```
-sudo docker exec -it 起動中のpostgreコンテナID /bin/sh -c "pg_restore -c -U postgres -d Implem.Pleasanter /backup/バックアップファイル名"
+sudo docker exec -it 起動中のpostgreコンテナID /bin/sh -c "pg_restore -c -U postgres -d Implem.Pleasanter /backup/<backup_file_name>"
 ```
 
 ## volume関連
