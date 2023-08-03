@@ -9,6 +9,8 @@ docker composeで動くPleasanterを自分の環境に合うようアレンジ�
 ## Pleasanterとは
 無料で使えるOSSのノーコード・ローコード開発ツール
 
+とても便利で活用させていただいています
+
 こちらをご残照ください https://pleasanter.org/
 
 ## 参照元
@@ -45,6 +47,8 @@ sudo docker compose up -d
 
 ### アクセス
 webブラウザで http:\//dockerホストIP:50001 にアクセス
+
+初期ID/PWは`Administrator/pleasanter`
 
 ### 停止
 ```
