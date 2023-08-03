@@ -30,6 +30,11 @@ https://qiita.com/imp-kawano/items/a9407d474c1dd39731d2
 <Any User password>
 ```
 
+- docker-compose.ymlにあるパスは自分の環境に合わせて書き換えてください
+```
+<path to your work dir> ※ docker-compose.ymlや.envを置いているディレクトリパスを指す
+```
+
 ## 基本
 ### 起動
 ```
