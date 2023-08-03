@@ -36,7 +36,7 @@ https://qiita.com/imp-kawano/items/a9407d474c1dd39731d2
 ```
 
 ## 基本
-前提として<path to your work dir> に移動した状態です。
+前提として`<path to your work dir>`に移動した状態です。
 
 ### 起動
 ```
