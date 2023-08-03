@@ -23,19 +23,21 @@ https://qiita.com/imp-kawano/items/a9407d474c1dd39731d2
 - docker-compose.ymlにSQLバックアップ用フォルダbackupを追加
 
 ## 注意
-- .envとsetup.sqlにあるパスワードはそれぞれお好みの文字列に置き換えてください
+- .envとsetup.sqlにあるパスワードはそれぞれお好みの文字列に置き換えてください。
 ```
 <Any Sa password>
 <Any Owner password>
 <Any User password>
 ```
 
-- docker-compose.ymlにあるパスは自分の環境に合わせて書き換えてください
+- docker-compose.ymlにあるパスは自分の環境に合わせて書き換えてください。
 ```
-<path to your work dir> ※ docker-compose.ymlや.envを置いているディレクトリパスを指す
+<path to your work dir> ※ docker-compose.ymlや.envを置いているdockerホストのディレクトリパスを指す
 ```
 
 ## 基本
+前提として<path to your work dir> に移動した状態です。
+
 ### 起動
 ```
 sudo docker compose up -d
@@ -50,7 +52,14 @@ sudo docker compose down
 ```
 
 ## DB関連
+必ず自身の環境でバックアップ/リストアはテストしてください。
+
+コマンドがあるからと言って必要な場面でリストアが成功するとは限りません。
+
 ### バックアップ
+-c以降はコンテナ内で実行されるコマンドです。
+
+dockerホストのbackupフォルダをバインドしているので、そこにバックアップファイルが設置されます。
 ```
 sudo docker exec -it 起動中のpostgreコンテナID /bin/sh -c "pg_dump -U postgres -Fc Implem.Pleasanter > /backup/`date +%Y%m%d"_"%H%M%S`_pleasanter.dump"
 ```
@@ -74,6 +83,9 @@ sudo docker volume ls
 「pleasanter_db-data」という名前のボリュームが見つかるはず
 
 ### volume削除(DBデータ丸ごと削除)
+バックアップ/リストアのテストなどで利用
+
+コンテナが停止していないと削除できない
 ```
 sudo docker volume rm pleasanter_db-data
 ```
