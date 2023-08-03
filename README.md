@@ -20,6 +20,7 @@ https://qiita.com/imp-kawano/items/a9407d474c1dd39731d2
 - setup.sqlにImplem.Pleasanter_Userに関する設定を追加
 - .envのPOSTGRES_USERとPOSTGRES_DBをpostgresに固定
 - docker-compose.ymlにデータ永続化のためのボリューム db-dataを追加
+- docker-compose.ymlにSQLバックアップ用フォルダbackupを追加
 
 ## 注意
 - .envとsetup.sqlにあるパスワードはそれぞれお好みの文字列に置き換えてください
@@ -46,12 +47,12 @@ sudo docker compose down
 ## DB関連
 ### バックアップ
 ```
-sudo docker exec -t 起動中のpostgreコンテナID pg_dumpall -c -U postgres > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
+sudo docker exec -it 起動中のpostgreコンテナID /bin/sh -c "pg_dump -U postgres -Fc Implem.Pleasanter > /backup/`date +%Y%m%d"_"%H%M%S`_pleasanter.dump"
 ```
 
 ### リストア
 ```
-cat バックアップ.sql | sudo docker exec -i 起動中のpostgreコンテナID psql -U postgres
+sudo docker exec -it 起動中のpostgreコンテナID /bin/sh -c "pg_restore -c -U postgres -d Implem.Pleasanter /backup/バックアップファイル名"
 ```
 
 ## volume関連
