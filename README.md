@@ -74,6 +74,34 @@ sudo docker exec -it 起動中のpostgreコンテナID /bin/sh -c "pg_dump -U po
 sudo docker exec -it 起動中のpostgreコンテナID /bin/sh -c "pg_restore -c -U postgres -d Implem.Pleasanter /backup/<backup_file_name>"
 ```
 
+### インデックス再構築
+
+バックアップを取ってから実行すること
+```
+sudo docker exec -it 起動中のpostgreコンテナID bash
+
+(postgreコンテナ内)
+psql --username postgres -d "Implem.Pleasanter" -c 'REINDEX DATABASE "'Implem.Pleasanter'";'
+```
+
+### collation version mismatch
+
+```
+WARNING:  database "postgres" has a collation version mismatch
+DETAIL:  The database was created using collation version 2.31, but the operating system provides version 2.36.
+HINT:  Rebuild all objects in this database that use the default collation and run ALTER DATABASE postgres REFRESH COLLATION VERSION, or build PostgreSQL with the right library version.
+```
+
+上記のような警告が出た場合、下記コマンドでバージョンを合わせる
+
+```
+sudo docker exec -it 起動中のpostgreコンテナID bash
+
+(postgreコンテナ内)
+psql --username postgres -d "Implem.Pleasanter" -c 'ALTER DATABASE "Implem.Pleasanter" REFRESH COLLATION VERSION;'
+```
+
+
 ## volume関連
 ### dockerをデフォルトでインストールした場合のdockerホスト上のパス
 ```
