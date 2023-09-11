@@ -63,6 +63,8 @@ sudo docker compose down
 ### バックアップ
 -c以降はコンテナ内で実行されるコマンドです。
 
+cronで動かすときは-itが不要。そうでないと```the input device is not a TTY```というエラーが出て、cronによるバックアップがうまく動きません。
+
 dockerホストのbackupフォルダをバインドしているので、そこにバックアップファイルが設置されます。
 ```
 sudo docker exec -it 起動中のpostgreコンテナID /bin/sh -c "pg_dump -U postgres -Fc Implem.Pleasanter > /backup/`date +%Y%m%d"_"%H%M%S`_pleasanter.dump"
