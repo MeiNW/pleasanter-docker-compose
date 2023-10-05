@@ -19,13 +19,13 @@ https://qiita.com/imp-kawano/items/b4735325683426cfffa8
 https://qiita.com/imp-kawano/items/a9407d474c1dd39731d2
 
 ## 参照元からの主な変更点
-- setup.sqlにImplem.Pleasanter_Userに関する設定を追加
+- ~~setup.sqlにImplem.Pleasanter_Userに関する設定を追加~~ 2023/10/5 一旦消し
 - .envのPOSTGRES_USERとPOSTGRES_DBをpostgresに固定
 - docker-compose.ymlにデータ永続化のためのボリューム db-dataを追加
 - docker-compose.ymlにSQLバックアップ用フォルダbackupを追加
 
 ## 注意
-- .envとsetup.sqlにあるパスワードはそれぞれお好みの文字列に置き換えてください。
+- .env~~とsetup.sql~~にあるパスワードはそれぞれお好みの文字列に置き換えてください。
 ```
 <Any Sa password>
 <Any Owner password>
